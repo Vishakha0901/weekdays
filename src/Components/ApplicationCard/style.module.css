@@ -1,0 +1,75 @@
+.gridContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 30px;
+    grid-row-gap: 30px;
+    padding: 10px;
+}
+
+ 
+@media only screen and (max-device-width: 768px){
+    .gridContainer{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media only screen and (max-device-width: 458px){ .gridContainer{
+    grid-template-columns: repeat(1, 1fr);
+}}
+
+.cardWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 1px solid white;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 4px 0px;
+    padding: 8px 16px;
+}
+
+.ellipseCard{
+    margin-top: 30px;
+    border: 1px solid white;
+    border-radius: 10px;
+    box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.1); 
+    padding: 8px 8px;
+    margin-bottom: 10px;
+    width: fit-content;
+}
+
+.imgWrapper{
+    height: 40px;
+    width: 25px;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+.aboutContainer{
+    height: 250px;
+    overflow: hidden;
+}
+
+.buttonsContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.buttonWrapper{
+    width: 100%;
+    background-color: rgb(85, 239, 196);
+    color: rgb(0, 0, 0);
+    font-weight: 500;
+    padding: 8px 18px;
+    border: none;
+    border-radius: 8px;
+}
+.unlockButtonWrapper{
+    background-color: rgb(73, 67, 218);
+}
+
+.viewMoreText{
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
