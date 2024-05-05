@@ -1,12 +1,13 @@
 import './App.css';
 import { useEffect, useState } from 'react';
 import ApplicationCard from './Components/ApplicationCard';
-// import Filter from './Components/Filter';
+import Filter from './Components/Filter';
 
 function App() {
 
-  const [data,setData]=useState({});
-  const [count,setCount]=useState(15);
+  const [data,setData]=useState([]);
+  const [count,setCount]=useState(0);
+  const [filteredData, setFilteredData] = useState([]);
   function fetchData()
   {
    
@@ -14,18 +15,15 @@ function App() {
 
   fetch("https://api.weekday.technology/adhoc/getSampleJdJSON", 
     {method: "POST", 
-    body:JSON.stringify({ "limit": count, "offset": count}),
+    body:JSON.stringify({ "limit": 15, "offset": count}),
     headers: {
       "Content-type": "application/json; charset=UTF-8"
     }
     }
   ).
   then((res)=> res.json()).
-  then((res)=>
-      // console.log(res),
-      
-      setData(res)
-
+  then((res)=>      
+      setData(prev => [...prev, ...res.jdList])
       ).catch((err)=>reject(err))
           
       })
@@ -35,12 +33,14 @@ function App() {
 
       try{
         if (window.innerHeight + document.documentElement.scrollTop+1 >= document.documentElement.scrollHeight) {
-          setCount(count+6)
-      }      }
+          setCount(count+1)
+      }      
+    }
       catch(error){
         console.log(error)
       }
      };
+
     useEffect(()=>{
       fetchData()
     },[count])
@@ -51,8 +51,9 @@ function App() {
     })
 
     return (
-      <div >
-       <ApplicationCard cardData={data}/>
+      <div>
+       <Filter cardData={data} setFilteredData={setFilteredData}/>
+       <ApplicationCard cardData={filteredData?.length > 0 ? filteredData : data}/>
       </div>
     );
 }

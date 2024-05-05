@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./style.module.css";
 
 const ApplicationCard = (props) => {
-  const data = props.cardData.jdList;
+  const data = props.cardData;
   return (
     <div className={styles.gridContainer}>
       {Array.isArray(data) &&
@@ -17,20 +17,20 @@ const ApplicationCard = (props) => {
                 className={styles.imgWrapper}
               />
               <div>
-                <div>{item.companyName}</div>
+                <div className={styles.companyName}>{item.companyName}</div>
                 <div>{item.jobRole} Engineer</div>
                 <div>{item.location}</div>
               </div>
             </div>
-            <div>
+            <div className={styles.estimatedSalary}>
               Estimated Salary: ₹{`${item.minJdSalary}-${item.maxJdSalary}`} LPA
             </div>
             <div className={styles.aboutContainer}>
-            <div>About Company:</div>
+            <div className={styles.aboutCompanyTitle}>About Company:</div>
             <div id="text" className={styles.description}>{item.jobDetailsFromCompany}</div>
             </div>
             <div className={styles.minExpContainer}>
-            <div>Minimum Experiance</div>
+            <div className={styles.minExpTitle}>Minimum Experiance</div>
             <span>{item.minExp ? item.minExp : 8} years</span>
             </div>
 
