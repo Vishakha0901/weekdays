@@ -52,7 +52,7 @@ function App() {
 
     return (
       <div>
-       <Filter cardData={data} setFilteredData={setFilteredData}/>
+       <Filter cardData={data} setFilterData={setFilteredData}/>
        <ApplicationCard cardData={filteredData?.length > 0 ? filteredData : data}/>
       </div>
     );
