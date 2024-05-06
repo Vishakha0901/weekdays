@@ -23,7 +23,7 @@ const ApplicationCard = (props) => {
               </div>
             </div>
             <div className={styles.estimatedSalary}>
-              Estimated Salary: ₹{`${item.minJdSalary}-${item.maxJdSalary}`} LPA
+              Estimated Salary: ₹{`${item.minJdSalary ? `${item.minJdSalary} -` : ""}${item.maxJdSalary ? item.maxJdSalary : ""}`} LPA
             </div>
             <div className={styles.aboutContainer}>
             <div className={styles.aboutCompanyTitle}>About Company:</div>

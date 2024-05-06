@@ -3,6 +3,7 @@
   margin: 50px;
   align-items: flex-start;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 .arrow {

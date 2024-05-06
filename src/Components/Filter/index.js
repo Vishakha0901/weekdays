@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import style from "./style.module.css";
 import cross from "./cross.png";
-
+// ! Unable to a filter on employee number as mock api response doen't contains the field
 const Filter = (props) => {
   const [rolesData, setRolesData] = useState([]);
   const remoteData = ["remote", "In-office"];
@@ -60,17 +60,15 @@ const Filter = (props) => {
 
   const [remoteLabel, setRemoteLabel] = useState("");
   function remoteClick(data) {
-    console.log(data, "data");
+    // console.log(data, "data");
     setRemoteLabel(data);
     setRemoteArrow((prev) => !prev);
     const filterData = props.cardData.filter((item) =>
-      item.location.includes(data.toLowerCase())
-        ? item.location.includes("remote")
-        : !item.location.includes("remote")
+      data === "remote" ? item.location.toLowerCase().includes(data.toLowerCase()) : !item.location.toLowerCase().includes("remote")
     );
     props.setFilterData(filterData);
   }
-
+  
   const [minSalaryLabel, setMinSalaryLabel] = useState("");
   function minSalaryClick(data) {
     let str = data;
@@ -88,7 +86,7 @@ const Filter = (props) => {
     setExperienceLabel(data);
     setExperienceArrow((prev) => !prev);
     const filterData = props.cardData.filter((item) => item.minExp <= data);
-    console.log(filterData, "filterData");
+    // console.log(filterData, "filterData");
     props.setFilterData(filterData);
   }
 
@@ -113,7 +111,7 @@ const Filter = (props) => {
   };
   useEffect(() => {
     setRolesData(getExperianceYears());
-    console.log(props.cardData, "props.cardData");
+    // console.log(props.cardData, "props.cardData");
   }, [props.cardData]);
 
   return (
